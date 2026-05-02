@@ -69,12 +69,6 @@ on:
         required: true
         type: string
 
-      tweak_version:
-        description: "The version of the tweak to use. Enter the version manually from dayanch96/YTLite/releases or leave default"
-        default: "5.2.1"
-        required: true
-        type: string
-
       display_name:
         description: "App Name (Optional)"
         default: "YouTube"
@@ -111,7 +105,6 @@ jobs:
       enable_gonerino: ${{ inputs.enable_gonerino }}
       enable_youspeed: ${{ inputs.enable_youspeed }}
       enable_ytlcm: ${{ inputs.enable_ytlcm }}
-      tweak_version: ${{ inputs.tweak_version }}
 
   package:
     name: Package IPA
