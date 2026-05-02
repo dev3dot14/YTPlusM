@@ -40,19 +40,19 @@ on:
         default: false
 
       enable_ytweaks:
-        description: "NEW! Integrate YTweaks (experimental)"
+        description: "Integrate YTweaks (YTPlusM)"
         type: boolean
         required: true
         default: false
         
       enable_gonerino:
-        description: "NEW! Integrate Gonerino (experimental)"
+        description: "Integrate Gonerino (YTPlusM)"
         type: boolean
         required: true
         default: false
 
       enable_youspeed:
-       description: "NEW! Integrate YouSpeed (experimental)"
+       description: "Integrate YouSpeed (YTPlusM)"
        type: boolean
        required: true
        default: false
