@@ -111,6 +111,7 @@ jobs:
       enable_gonerino: ${{ inputs.enable_gonerino }}
       enable_youspeed: ${{ inputs.enable_youspeed }}
       enable_ytlcm: ${{ inputs.enable_ytlcm }}
+      tweak_version: ${{ inputs.tweak_version }}
 
   package:
     name: Package IPA
