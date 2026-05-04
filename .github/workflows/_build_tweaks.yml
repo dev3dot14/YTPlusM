@@ -106,7 +106,7 @@ jobs:
           git checkout
           mv *.sdk $THEOS/sdks
 
-      - name: Download YouTube Plus  (by ver)
+      - name: Download YouTube Plus (by ver)
         run: |
           deb_url="https://github.com/Mark02-2012/YTPlusM-DIY-5.2.1/releases/download/YTPlusVersions/com.dvntm.ytlite_${{ inputs.tweak_version }}_iphoneos-arm.deb"
           wget "$deb_url" --no-verbose -O ytplus.deb
