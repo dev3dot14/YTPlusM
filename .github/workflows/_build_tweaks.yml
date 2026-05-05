@@ -108,7 +108,7 @@ jobs:
 
       - name: Download YouTube Plus (by ver)
         run: |
-          deb_url="https://github.com/Mark02-2012/YTPlusM-DIY-5.2.1/releases/download/YTPlusVersions/com.dvntm.ytlite_${{ inputs.tweak_version }}_iphoneos-arm.deb"
+          deb_url="https://github.com/Mark02-2012/YTPlusM-DIY/releases/download/YTPlusVersions/com.dvntm.ytlite_${{ inputs.tweak_version }}_iphoneos-arm.deb"
           wget "$deb_url" --no-verbose -O ytplus.deb
 
       - name: Download YouTube Plus (by URL)
@@ -192,12 +192,12 @@ jobs:
         if: ${{ inputs.enable_YTLCM }}
         run: git clone --quiet --depth=1 https://github.com/arichornlover/YTLowContrastMode.git
 
-      - name: Patch YTLowContrastMode
+      - name: Create Switch and Menu for YTLCM
         if: ${{ inputs.enable_YTLCM }}
         run: |
          cd YTLowContrastMode
           echo '#import <UIKit/UIKit.h>' > patch.txt
-          echo '#define IS_ENABLED(k) YES' >> patch.txt
+          echo '#define IS_ENABLED(k) ([[NSUserDefaults standardUserDefaults] objectForKey:k] ? [[NSUserDefaults standardUserDefaults] boolForKey:k] : YES)' >> patch.txt
           echo '@interface YTQTMButton : UIButton' >> patch.txt
           echo '- (void)setTintColor:(id)color;' >> patch.txt
           echo '@end' >> patch.txt
@@ -205,7 +205,35 @@ jobs:
           echo '@end' >> patch.txt
           cat Tweak.xm >> patch.txt
           mv patch.txt Tweak.xm
-        
+
+
+          mkdir -p layout/Library/PreferenceBundles/YTLowContrastMode.bundle
+          cat <<EOF > layout/Library/PreferenceBundles/YTLowContrastMode.bundle/Root.plist
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.EN">
+          <plist version="1.0">
+           <dict>
+             <key>items</key>
+               <array>
+                 <dict>
+                   <key>cell</key>
+                    <string>PSSwitchCell</string>
+                    <key>default</key>
+                    <true/>
+                    <key>defaults</key>
+                    <string>com.google.ios.youtube</string>
+                    <key>key</key>
+                    <string>LowContrastMode</string>
+                    <key>label</key>
+                    <string>Enable LowContrastMode</string>
+                </dict>
+              </array>
+             <key>title</key>
+            <string>YTLowContrastMode</string>
+          </dict>
+         </plist>
+         EOF
+
       - name: Build YouPiP
         if: ${{ inputs.enable_youpip }}
         run: |
