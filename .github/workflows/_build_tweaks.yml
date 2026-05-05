@@ -192,31 +192,40 @@ jobs:
         if: ${{ inputs.enable_YTLCM }}
         run: git clone --quiet --depth=1 https://github.com/arichornlover/YTLowContrastMode.git
 
-      - name: Create Switch and Menu for YTLCM
+      - name: Setup YTLowContrastMode with Toggle
         if: ${{ inputs.enable_YTLCM }}
         run: |
          cd YTLowContrastMode
-          echo '#import <UIKit/UIKit.h>' > patch.txt
-          echo '#define IS_ENABLED(k) ([[NSUserDefaults standardUserDefaults] objectForKey:k] ? [[NSUserDefaults standardUserDefaults] boolForKey:k] : YES)' >> patch.txt
-          echo '@interface YTQTMButton : UIButton' >> patch.txt
-          echo '- (void)setTintColor:(id)color;' >> patch.txt
-          echo '@end' >> patch.txt
-          echo '@interface YTCollectionViewCell : UICollectionViewCell' >> patch.txt
-          echo '@end' >> patch.txt
-          cat Tweak.xm >> patch.txt
-          mv patch.txt Tweak.xm
+         echo '#import <UIKit/UIKit.h>' > patch.txt
+         echo '#define IS_ENABLED(k) ([[NSUserDefaults standardUserDefaults] objectForKey:k] ? [[NSUserDefaults standardUserDefaults] boolForKey:k] : YES)' >> patch.txt
+         echo '@interface YTQTMButton : UIButton' >> patch.txt
+         echo '- (void)setTintColor:(id)color;' >> patch.txt
+         echo '@end' >> patch.txt
+         echo '@interface YTCollectionViewCell : UICollectionViewCell' >> patch.txt
+         echo '@end' >> patch.txt
+         cat Tweak.xm >> patch.txt
+         mv patch.txt Tweak.xm
 
+         IDENTIFIER="com.arichornlover.ytlcm"
+         BUNDLE_NAME="ytlowcontrastmode"
+         BUNDLE_PATH="layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle"
+         mkdir -p $BUNDLE_PATH
 
-          mkdir -p layout/Library/PreferenceBundles/YTLowContrastMode.bundle
-          cat <<EOF > layout/Library/PreferenceBundles/YTLowContrastMode.bundle/Root.plist
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.EN">
-          <plist version="1.0">
-           <dict>
-             <key>items</key>
-               <array>
-                 <dict>
-                   <key>cell</key>
+         cat <<EOF > $BUNDLE_PATH/Root.plist
+         <?xml version="1.0" encoding="UTF-8"?>
+         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.EN">
+         <plist version="1.0">
+         <dict>
+            <key>items</key>
+            <array>
+                <dict>
+                    <key>cell</key>
+                    <string>PSGroupCell</string>
+                    <key>label</key>
+                    <string>Settings</string>
+                </dict>
+                <dict>
+                    <key>cell</key>
                     <string>PSSwitchCell</string>
                     <key>default</key>
                     <true/>
@@ -225,12 +234,31 @@ jobs:
                     <key>key</key>
                     <string>LowContrastMode</string>
                     <key>label</key>
-                    <string>Enable LowContrastMode</string>
+                    <string>Enable Low Contrast</string>
                 </dict>
-              </array>
-             <key>title</key>
-            <string>YTLowContrastMode</string>
-          </dict>
+            </array>
+            <key>title</key>
+            <string>YT Low Contrast</string>
+         </dict>
+         </plist>
+         EOF
+
+         cat <<EOF > $BUNDLE_PATH/Info.plist
+         <?xml version="1.0" encoding="UTF-8"?>
+         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.EN">
+         <plist version="1.0">
+         <dict>
+            <key>CFBundleIdentifier</key>
+            <string>$IDENTIFIER</string>
+            <key>CFBundlePackageType</key>
+            <string>BNDL</string>
+            <key>CFBundleSignature</key>
+            <string>????</string>
+            <key>CFBundleExecutable</key>
+            <string>$BUNDLE_NAME</string>
+            <key>NSPrincipalClass</key>
+            <string>PSListController</string>
+         </dict>
          </plist>
          EOF
 
