@@ -203,9 +203,27 @@ jobs:
          echo '@end' >> patch.txt
          echo '@interface YTCollectionViewCell : UICollectionViewCell' >> patch.txt
          echo '@end' >> patch.txt
+         echo '@interface ELTLabel : UILabel' >> patch.txt
+         echo '@end' >> patch.txt
+         cat <<EOF >> patch.txt
+         %group Main
+         %hook ELTLabel
+         - (void)setTextColor:(UIColor *)color {
+            if (IS_ENABLED(@"LowContrastMode")) {
+                %orig([UIColor colorWithWhite:0.6 alpha:1.0]);
+            } else {
+                %orig;
+            }
+         }
+         %end
+         %end
+
+         %ctor {
+             %init(Main);
+         }
+         EOF
          cat Tweak.xm >> patch.txt
          mv patch.txt Tweak.xm
-
          IDENTIFIER="com.arichornlover.ytlcm"
          BUNDLE_NAME="ytlowcontrastmode"
          BUNDLE_PATH="layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle"
@@ -261,9 +279,9 @@ jobs:
          </dict>
          </plist>
          EOF
-         mkdir -p ../layout/Library/PreferenceBundles/ytlowcontrastmode.bundle
-         cp -r $BUNDLE_PATH/* ../layout/Library/PreferenceBundles/ytlowcontrastmode.bundle/
 
+         mkdir -p ../layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle
+         cp -r $BUNDLE_PATH/* ../layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle/
 
       - name: Build YouPiP
         if: ${{ inputs.enable_youpip }}
