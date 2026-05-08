@@ -122,7 +122,7 @@ View also <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-action
 PS: DIY=DO IT YOURSELF
 
 ## YTPlusM DIY versions changelog
-<li><strong>1.0:</strong></li>
+<li><strong>1.0 (April 14 2026):</strong></li>
 First release, added YTweaks, Gonerino and YouSpeed injectable
 <li><strong>1.1 (May 5 2026):</strong></li>
 Finally! YTLowContrastMode added, supporting also newest YT IPAs
