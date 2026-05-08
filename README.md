@@ -12,7 +12,7 @@ Visit <a href="https://github.com/Mark02-2012/YTPlusM-DIY">YTPlusM-DIY repo</a> 
 - [Main Features](#main-features)
 - [FAQ](#faq)
 - [Reviews](#reviews)
-- [How to build a YouTube Plus app using GitHub Actions](#how-to-build-a-youtube-plus-app-using-github-actions)
+- [How to build YouTube Plus and YTPlusM app using GitHub Actions](#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions)
 - [What Means YTPlusM and YTPlusM DIY](#what-means-ytplusm-and-ytplusm-diy)
 - [YTPlusM DIY versions changelog](#ytplusm-diy-versions-changelog)
 - [Supported YouTube Version](#supported-youtube-version)
@@ -70,15 +70,15 @@ Visit <a href="https://github.com/Mark02-2012/YTPlusM-DIY">YTPlusM-DIY repo</a> 
 ## Reviews
 Review by [@qbap](https://github.com/qbap) on ONE Jailbreak: https://onejailbreak.com/blog/youtube-plus/
 
-## How to build a YouTube Plus app using Github actions
+## How to build YouTube Plus and YTPlusM app using Github actions
 > [!NOTE]
 > If this your first time, complete following steps before starting:
 >
-> 1. Fork this repository using the fork button on the top right
+> 1. Fork <a href="https://GitHub.com/Mark02-2012/YTPlusM-DIY">this</a> repository using the fork button on the top right
 > 2. On your forked repository, go to **Repository Settings** > **Actions**, enable **Read and Write** permissions.
 
 <details>
-  <summary>How to build the YouTube Plus app</summary>
+  <summary>How to build YTPlus and YTPlusM app</summary>
   <ol>
     <li>Click on <strong>Sync fork</strong>, and if your branch is out-of-date, click on <strong>Update branch</strong>.</li>
     <li>Navigate to the <strong>Actions tab</strong> in your forked repository and select <strong>Create YouTube Plus app</strong>.</li>
@@ -91,7 +91,6 @@ Review by [@qbap](https://github.com/qbap) on ONE Jailbreak: https://onejailbrea
     <li>Wait for the build to finish. You can download the YouTube Plus app from the releases section of your forked repo. (If you can't find the releases section, go to your forked repo and add /releases to the URL, i.e., github.com/user/YTLite/releases.)</li>
   </ol>
 </details>
-
 
 <details>
   <summary>How to build the YouTube Plus app with your own link for the YouTube Plus tweak</summary>
@@ -118,7 +117,7 @@ Review by [@qbap](https://github.com/qbap) on ONE Jailbreak: https://onejailbrea
 
 <li><strong>YTPlusM DIY:</strong></li>
 <strong>From now, YOU can build the IPAs of YTPlusM with GitHub Actions! Fork <a href="https://github.com/Mark02-2012/YTPlusM-DIY-5.2.1">YTPlusM-DIY repo</a> (to build YTPlusM with YTPlus from 5.1 to 5.2.1, no 5.2, without DRM Patreon subscription); then go to Actions, workflows, "Create YouTube Plus app", make sure it is selected the branch "YTPlusM_DIY" and create your total functioning IPA!</strong>
-View also <a href=#how-to-build-a-youtube-plus-app-using-github-actions>How to build a YouTube Plus app using GitHub Actions</a> to learn how to create YTPlus and YTPlusM IPAs.
+View also <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> to learn how to create YTPlus and YTPlusM IPAs.
 
 PS: DIY=DO IT YOURSELF
 
@@ -205,7 +204,7 @@ Finally! YTLowContrastMode added, supporting also newest YT IPAs
  <p>Gonerino is a tweak developed by <a href="https://github.com/castdrian">castdrian</a>, a tweak to block specific videos, channels and words for the iOS YouTube app.</p>
  <p><strong>Gonerino preferences</strong> are available in the <strong>YouTube settings</strong>.</p>
  <p>Source code and additional information are available <a href="https://github.com/castdrian/Gonerino">in castdrian's repository.</p>
- <p><em>Gonerino is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_21.13.6_updated_YTPlusM">YTPlusM 21.13.6 updated</a> and <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_20.21.6_YTweaks">YTPlusM 20.21.6 for iOS 15</a> pre-built releases, but you can build your version of YTPlusM now! View <a href=#how-to-build-a-youtube-plus-app-using-github-actions>How to build a YouTube Plus app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
+ <p><em>Gonerino is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_21.13.6_updated_YTPlusM">YTPlusM 21.13.6 updated</a> and <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_20.21.6_YTweaks">YTPlusM 20.21.6 for iOS 15</a> pre-built releases, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
 </details>
 
 <details>
@@ -213,7 +212,7 @@ Finally! YTLowContrastMode added, supporting also newest YT IPAs
  <p>YouSpeed is a tweak developed by <a href="https://github.com/PoomSmart">PoomSmart</a>, a tweak to view, change and add video speed options in the video overlay.</p>
  <p><strong>YouSpeed preferences</strong> are available in the <strong>Video overlay</strong> section under <strong>YouTube settings</strong>.</p>
  <p>Source code and additional information are available <a href="https://github.com/PoomSmart/YouSpeed">in PoomSmart's repository.</p>
- <p><em>YouSpeed is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_21.13.6_updated_YTPlusM">YTPlusM 21.13.6 updated</a> and <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_20.21.6_YTweaks">YTPlusM 20.21.6 for iOS 15</a> pre-built releases, but you can build your version of YTPlusM now! View <a href=#how-to-build-a-youtube-plus-app-using-github-actions>How to build a YouTube Plus app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
+ <p><em>YouSpeed is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_21.13.6_updated_YTPlusM">YTPlusM 21.13.6 updated</a> and <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_20.21.6_YTweaks">YTPlusM 20.21.6 for iOS 15</a> pre-built releases, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
 </details>
 
 <details>
@@ -221,7 +220,7 @@ Finally! YTLowContrastMode added, supporting also newest YT IPAs
  <p>YTLowContrastMode is a tweak developed by <a href="https://github.com/arichornlover">arichornlover</a>, a Tweak to make YT and YTMusic apps' Interface Low Contrast as possible and Easy on the eyes.</p>
  <p><strong>YTLowContrastMode preferences are not available</strong>; the tweak <strong>is already activated</strong> when you choose to inject it.</p>
  <p>Source code and additional information are available <a href="https://github.com/arichornlover/YTLowContrastMode">in arichornlover's repository.</p>
- <p><em>YTLowContrastMode is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2.1_21.18.4_updated">YTPlusM 5.2.1 and 21.18.4 updated</a> pre-built release, but you can build your version of YTPlusM now! View <a href=#how-to-build-a-youtube-plus-app-using-github-actions>How to build a YouTube Plus app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
+ <p><em>YTLowContrastMode is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2.1_21.18.4_updated">YTPlusM 5.2.1 and 21.18.4 updated</a> pre-built release, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
 </details>
 
 ## Special thanks
