@@ -199,6 +199,7 @@ Added VolumeBoostYT and YouGetCaptions
  <p>YTweaks is a tweak developed by <a href="https://github.com/fosterbarnes">fosterbarnes</a> that adds various tweaks for the iOS YouTube app.</p>
  <p><strong>YTweaks preferences</strong> are available in the <strong>YouTube settings</strong>.</p>
  <p>Source code and additional information are available <a href="https://github.com/fosterbarnes/YTweaks">in fosterbarnes' repository.</p>
+ <p><em>From now, YOU can build your version of YTPlusM! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
 </details>
 
 <details>
@@ -225,6 +226,23 @@ Added VolumeBoostYT and YouGetCaptions
  <p><em>YTLowContrastMode is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2.1_21.18.4_updated">YTPlusM 5.2.1 and 21.18.4 updated</a> pre-built release, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
 </details>
 
+<details>
+ <summary><strong>NEW!</strong> VolumeBoostYT (only on YTPlusM versions)</summary>
+ <p>VolumeBoostYT is a tweak developed by <a href="https://github.com/VasirakCalgux">VasirakCalgux</a> that provides an independent, gesture-based volume control for the YouTube app, completely separate from the system volume.</p>
+ <p><strong>VolumeBoostYT preferences</strong> are available in the <strong>YouTube settings</strong>.</p>
+ <p>Source code and additional information are available <a href="https://github.com/VasirakCalgux/VolumeBoostYT">in VasirakCalgux's repository.</p>
+ <p><em>VolumeBoostYT is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2.1_21.19.2(56)">YTPlusM 5.2.1 and 21.19.2</a> pre-built release, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
+</details>
+
+<details>
+ <summary><strong>NEW!</strong> YouGetCaption (only on YTPlusM versions)</summary>
+ <p>YouGetCaption is a tweak developed by <a href="https://github.com/PoomSmart">PoomSmart</a> that views and copies video caption from YouTube app from the video overlay.</p>
+ <p><strong>YouGetCaption preferences</strong> are available in the <strong>Video overlay</strong> section under <strong>YouTube settings</strong>.</p>
+ <p>Source code and additional information are available <a href="https://github.com/PoomSmart/YouGetCaption">in PoomSmart's repository.</p>
+ <p><em>YouGetCaption is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2.1_21.19.2(56)">YTPlusM 5.2.1 and 21.19.2</a> pre-built release, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
+</details>
+
+
 ## Special thanks
 This project is alive **only** thanks to those guys:
 
@@ -233,4 +251,26 @@ This project is alive **only** thanks to those guys:
 
 
 <a href="https://www.reddit.com/u/shinewake/s/ZeFbBOkUAa">shinewake</a>: **patcher of YTPlus 5.2.1 (he removed Patreon DRM)**
+
+
+<a href="https://github.com/fosterbarnes">fosterbarnes</a>: **creator of YTweaks**
+
+
+<a href="https://github.com/PoomSmart">PoomSmart</a>: **creator of YouSpeed and YouGetCaption**
+
+
+<a href="https://github.com/arichornlover">arichornlover</a>: **creator of YTLowContrastMode**
+
+
+<a href="https://github.com/castdrian">castdrian</a>: **creator of Gonerino**
+
+
+<a href="https://github.com/VasirakCalgux">VasirakCalgux</a>: **creator of VolumeBoostYT**
+
+
+
+
+
+
+
 
