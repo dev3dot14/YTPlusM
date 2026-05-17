@@ -283,6 +283,23 @@ jobs:
          mkdir -p ../layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle
          cp -r $BUNDLE_PATH/* ../layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle/
 
+         cat <<EOF > Settings.xm
+         static BOOL libYTLCMEnabled;
+
+         static void loadPrefs() {
+            NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.google.ios.youtube.plist"];
+            // Se la chiave non esiste, lo impostiamo su YES di default
+            libYTLCMEnabled = dict[@"LowContrastMode"] ? [dict[@"LowContrastMode"] boolValue] : YES;
+         }
+
+         %ctor {
+            loadPrefs();
+            // Ascolta il cambiamento in tempo reale senza riavviare l'app
+            CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.arichornlover.ytlcm/settingschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+         }
+         EOF
+         cat Settings.xm >> Tweak.xm
+
       - name: Build YouPiP
         if: ${{ inputs.enable_youpip }}
         run: |
