@@ -48,6 +48,11 @@ on:
         required: true
         default: false
 
+      enable_VolumeBoostYT:
+        type: boolean
+        required: true
+        default: false
+
       enable_ytlcm:
         type: boolean
         required: true
@@ -78,7 +83,7 @@ jobs:
           echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
 
       - name: Cache Theos
-        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_ytabc || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm }}
+        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_ytabc || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm || inputs.enable_VolumeBoostYT }}
         id: theos
         uses: actions/cache@v5
         env:
@@ -89,7 +94,7 @@ jobs:
           restore-keys: ${{ env.cache-name }}
 
       - name: Setup Theos
-        if: ${{ (inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_ytabc || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm) && steps.theos.outputs.cache-hit != 'true' }}
+        if: ${{ (inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_ytabc || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm || inputs.enable_VolumeBoostYT) && steps.theos.outputs.cache-hit != 'true' }}
         uses: actions/checkout@v6
         with:
           repository: theos/theos
@@ -98,7 +103,7 @@ jobs:
           submodules: recursive
 
       - name: Download iOS SDK
-        if: ${{ (inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_ytabc || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm) && steps.theos.outputs.cache-hit != 'true' }}
+        if: ${{ (inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_ytabc || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm || inputs.enable_VolumeBoostYT) && steps.theos.outputs.cache-hit != 'true' }}
         run: |
           git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/theos/sdks/
           cd sdks
@@ -123,7 +128,7 @@ jobs:
    
 
       - name: Clone YouTubeHeader
-        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_ytabc || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm }}
+        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_ytabc || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm || inputs.enable_VolumeBoostYT }}
         run: |
           if [ -d "$THEOS/include/YouTubeHeader" ]; then
             cd $THEOS/include/YouTubeHeader && git pull
@@ -136,7 +141,7 @@ jobs:
           fi
 
       - name: Clone PSHeader
-        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_ytabc || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm }}
+        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_ytabc || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm || inputs.enable_VolumeBoostYT }}
         run: |
           if [ -d "$THEOS/include/PSHeader" ]; then
             cd $THEOS/include/PSHeader && git pull
@@ -161,7 +166,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTABConfig.git
 
       - name: Clone YouGroupSettings
-        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm }}
+        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc || inputs.enable_ytweaks || inputs.enable_gonerino || inputs.enable_youspeed || inputs.enable_ytlcm || inputs.enable_VolumeBoostYT }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
 
       - name: Clone YouQuality
@@ -188,6 +193,10 @@ jobs:
         if: ${{ inputs.enable_youspeed }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
 
+      - name: Clone VolumeBoostYT
+        if: ${{ inputs.enable_VolumeBoostYT || inputs.enable_ytlcm  }}
+        run: git clone --quiet --depth=1 https://github.com/VasirakCalgux/VolumeBoostYT.git
+
       - name: Clone YTLowContrastMode
         if: ${{ inputs.enable_ytlcm }}
         run: git clone --quiet --depth=1 https://github.com/arichornlover/YTLowContrastMode.git
@@ -195,110 +204,124 @@ jobs:
       - name: Setup YTLowContrastMode with Toggle
         if: ${{ inputs.enable_ytlcm }}
         run: |
-         cd YTLowContrastMode
-         echo '#import <UIKit/UIKit.h>' > patch.txt
-         echo '#define IS_ENABLED(k) ([[NSUserDefaults standardUserDefaults] objectForKey:k] ? [[NSUserDefaults standardUserDefaults] boolForKey:k] : YES)' >> patch.txt
-         echo '@interface YTQTMButton : UIButton' >> patch.txt
-         echo '- (void)setTintColor:(id)color;' >> patch.txt
-         echo '@end' >> patch.txt
-         echo '@interface YTCollectionViewCell : UICollectionViewCell' >> patch.txt
-         echo '@end' >> patch.txt
-         echo '@interface ELTLabel : UILabel' >> patch.txt
-         echo '@end' >> patch.txt
-         cat <<EOF >> patch.txt
-         %group Main
-         %hook ELTLabel
-         - (void)setTextColor:(UIColor *)color {
-            if (IS_ENABLED(@"LowContrastMode")) {
-                %orig([UIColor colorWithWhite:0.6 alpha:1.0]);
-            } else {
-                %orig;
-            }
-         }
-         %end
-         %end
+          cd YTLowContrastMode
+          echo '#import <UIKit/UIKit.h>' > patch.txt
+          echo '#define IS_ENABLED(k) ([[NSUserDefaults standardUserDefaults] objectForKey:k] ? [[NSUserDefaults standardUserDefaults] boolForKey:k] : YES)' >> patch.txt
+          echo '@interface YTQTMButton : UIButton' >> patch.txt
+          echo '- (void)setTintColor:(id)color;' >> patch.txt
+          echo '@end' >> patch.txt
+          echo '@interface YTCollectionViewCell : UICollectionViewCell' >> patch.txt
+          echo '@end' >> patch.txt
+          echo '@interface ELTLabel : UILabel' >> patch.txt
+          echo '@end' >> patch.txt
+          
+          cat <<EOF >> patch.txt
+          %group Main
+          %hook ELTLabel
+          - (void)setTextColor:(UIColor *)color {
+              if (IS_ENABLED(@"LowContrastMode")) {
+                  %orig([UIColor colorWithWhite:0.6 alpha:1.0]);
+              } else {
+                  %orig;
+              }
+          }
+          %end
+          %end
+          
+          %ctor {
+              %init(Main);
+          }
+          EOF
+          
+          cat Tweak.xm >> patch.txt
+          mv patch.txt Tweak.xm
+          
+          IDENTIFIER="com.arichornlover.ytlcm"
+          BUNDLE_NAME="ytlowcontrastmode"
+          
+          cat <<EOF > Settings.xm
+          static BOOL libYTLCMEnabled;
+          static void loadPrefs() {
+              NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.google.ios.youtube.plist"];
+              libYTLCMEnabled = dict[@"LowContrastMode"] ? [dict[@"LowContrastMode"] boolValue] : YES;
+          }
+          %ctor {
+              loadPrefs();
+              CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.arichornlover.ytlcm/settingschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+          }
+          EOF
+          cat Settings.xm >> Tweak.xm
 
-         %ctor {
-             %init(Main);
-         }
-         EOF
-         cat Tweak.xm >> patch.txt
-         mv patch.txt Tweak.xm
-         IDENTIFIER="com.arichornlover.ytlcm"
-         BUNDLE_NAME="ytlowcontrastmode"
-         BUNDLE_PATH="layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle"
-         mkdir -p $BUNDLE_PATH
+          TMP_BUNDLE="layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle"
+          mkdir -p $TMP_BUNDLE
+          
+          cat <<EOF > $TMP_BUNDLE/Root.plist
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.EN">
+          <plist version="1.0">
+          <dict>
+              <key>items</key>
+              <array>
+                  <dict>
+                      <key>cell</key>
+                      <string>PSGroupCell</string>
+                      <key>label</key>
+                      <string>Settings</string>
+                  </dict>
+                  <dict>
+                      <key>cell</key>
+                      <string>PSSwitchCell</string>
+                      <key>default</key>
+                      <true/>
+                      <key>defaults</key>
+                      <string>com.google.ios.youtube</string>
+                      <key>key</key>
+                      <string>LowContrastMode</string>
+                      <key>label</key>
+                      <string>Enable Low Contrast</string>
+                      <key>PostNotification</key>
+                      <string>com.arichornlover.ytlcm/settingschanged</string>
+                  </dict>
+              </array>
+              <key>title</key>
+              <string>YT Low Contrast</string>
+          </dict>
+          </plist>
+          EOF
 
-         cat <<EOF > $BUNDLE_PATH/Root.plist
-         <?xml version="1.0" encoding="UTF-8"?>
-         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.EN">
-         <plist version="1.0">
-         <dict>
-            <key>items</key>
-            <array>
-                <dict>
-                    <key>cell</key>
-                    <string>PSGroupCell</string>
-                    <key>label</key>
-                    <string>Settings</string>
-                </dict>
-                <dict>
-                    <key>cell</key>
-                    <string>PSSwitchCell</string>
-                    <key>default</key>
-                    <true/>
-                    <key>defaults</key>
-                    <string>com.google.ios.youtube</string>
-                    <key>key</key>
-                    <string>LowContrastMode</string>
-                    <key>label</key>
-                    <string>Enable Low Contrast</string>
-                </dict>
-            </array>
-            <key>title</key>
-            <string>YT Low Contrast</string>
-         </dict>
-         </plist>
-         EOF
+          cat <<EOF > $TMP_BUNDLE/Info.plist
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.EN">
+          <plist version="1.0">
+          <dict>
+              <key>CFBundleIdentifier</key>
+              <string>$IDENTIFIER</string>
+              <key>CFBundlePackageType</key>
+              <string>BNDL</string>
+              <key>CFBundleSignature</key>
+              <string>????</string>
+              <key>CFBundleExecutable</key>
+              <string>$BUNDLE_NAME</string>
+              <key>NSPrincipalClass</key>
+              <string>PSListController</string>
+          </dict>
+          </plist>
+          EOF
 
-         cat <<EOF > $BUNDLE_PATH/Info.plist
-         <?xml version="1.0" encoding="UTF-8"?>
-         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.EN">
-         <plist version="1.0">
-         <dict>
-            <key>CFBundleIdentifier</key>
-            <string>$IDENTIFIER</string>
-            <key>CFBundlePackageType</key>
-            <string>BNDL</string>
-            <key>CFBundleSignature</key>
-            <string>????</string>
-            <key>CFBundleExecutable</key>
-            <string>$BUNDLE_NAME</string>
-            <key>NSPrincipalClass</key>
-            <string>PSListController</string>
-         </dict>
-         </plist>
-         EOF
-
-         mkdir -p ../layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle
-         cp -r $BUNDLE_PATH/* ../layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle/
-
-         cat <<EOF > Settings.xm
-         static BOOL libYTLCMEnabled;
-
-         static void loadPrefs() {
-            NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.google.ios.youtube.plist"];
-            // Se la chiave non esiste, lo impostiamo su YES di default
-            libYTLCMEnabled = dict[@"LowContrastMode"] ? [dict[@"LowContrastMode"] boolValue] : YES;
-         }
-
-         %ctor {
-            loadPrefs();
-            // Ascolta il cambiamento in tempo reale senza riavviare l'app
-            CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.arichornlover.ytlcm/settingschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
-         }
-         EOF
-         cat Settings.xm >> Tweak.xm
+          FINAL_BUNDLE_PATH="../layout/Library/PreferenceBundles/${BUNDLE_NAME}.bundle"
+          mkdir -p $FINAL_BUNDLE_PATH
+          
+          cp $TMP_BUNDLE/Root.plist $FINAL_BUNDLE_PATH/
+          cp $TMP_BUNDLE/Info.plist $FINAL_BUNDLE_PATH/
+          
+          SOURCE_BINARY="../layout/Library/PreferenceBundles/volumeboostyt.bundle/volumeboostyt"
+          
+          if [ -f "$SOURCE_BINARY" ]; then
+            echo "Binario di VolumeBoost trovato! Creo la sezione separata per YTLCM..."
+            cp "$SOURCE_BINARY" "$FINAL_BUNDLE_PATH/${BUNDLE_NAME}"
+          else
+            echo "ATTENZIONE: VolumeBoost non trovato nel layout, la sezione potrebbe non apparire!"
+          fi
 
       - name: Build YouPiP
         if: ${{ inputs.enable_youpip }}
@@ -325,7 +348,7 @@ jobs:
           mv packages/*.deb ../ytabc.deb
 
       - name: Build YouGroupSettings
-        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc || inputs.enable_ytlcm }}
+        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc || inputs.enable_ytlcm || inputs.enable_VolumeBoostYT }}
         run: |
           cd YouGroupSettings && make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ../ygs.deb
@@ -366,12 +389,17 @@ jobs:
           cd YouSpeed && make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ../youspeed.deb
 
+      - name: Build VolumeBoostYT
+        if: ${{ inputs.enable_VolumeBoostYT }}
+        run: |
+          cd VolumeBoostYT && make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ../volumeboostyt.deb
+
       - name: Build YTLowContrastMode
         if: ${{ inputs.enable_ytlcm }}
         run: |
           cd YTLowContrastMode && make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ../ytlcm.deb
-
 
       - name: Clone Open in YouTube (Safari extension)
         run: |
