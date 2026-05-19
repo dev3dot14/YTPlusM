@@ -172,10 +172,10 @@ jobs:
           done
           cyan -i youtube.ipa -o YTPlusM_${{ env.YT_VERSION }}_${{ github.event.inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ github.event.inputs.display_name }}" -b ${{ github.event.inputs.bundle_id }}
 
-      - name: Checkout release_builder 
+      - name: Checkout Releases_builder 
         uses: actions/checkout@v6.0.2       
         with:
-          ref: release_builder 
+          ref: Releases_builder 
   
       - name: Prepare Releases Notes
         run: |
