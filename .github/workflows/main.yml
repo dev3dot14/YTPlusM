@@ -166,6 +166,20 @@ jobs:
           unzip -q youtube.ipa -d ytextracted
           echo "YT_VERSION=$(grep -A 1 '<key>CFBundleVersion</key>' ytextracted/Payload/YouTube.app/Info.plist | grep '<string>' | awk -F'[><]' '{print $3}')" >> $GITHUB_ENV
 
+      - name: Determines the Release Title Prefix
+        run: |
+          if [ "${{ github.event.inputs.enable_ytweaks }}" = "false" ] && \
+             [ "${{ github.event.inputs.enable_gonerino }}" = "false" ] && \
+             [ "${{ github.event.inputs.enable_youspeed }}" = "false" ] && \
+             [ "${{ github.event.inputs.enable_ytlcm }}" = "false" ] && \
+             [ "${{ github.event.inputs.enable_VolumeBoostYT }}" = "false" ] && \
+             [ "${{ github.event.inputs.enable_YouGetCaption }}" = "false" ]; then
+            
+            echo "RELEASE_PREFIX=YTPlus" >> $GITHUB_ENV
+          else
+            echo "RELEASE_PREFIX=YTPlusM" >> $GITHUB_ENV
+          fi
+
       - name: Install cyan
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
 
@@ -181,21 +195,6 @@ jobs:
         run: |
           sed "s/%yt_version%/${{ env.YT_VERSION }}/g; s/%ytlite_version%/${{ github.event.inputs.tweak_version }}/g" \
           .github/RELEASE_TEMPLATE/Release_Notes.md > release_notes_prepared.md
-
-      - name: Determines the Release Title Prefix
-        run: |
-          if [ "${{ github.event.inputs.enable_ytweaks }}" = "false" ] && \
-             [ "${{ github.event.inputs.enable_gonerino }}" = "false" ] && \
-             [ "${{ github.event.inputs.enable_youspeed }}" = "false" ] && \
-             [ "${{ github.event.inputs.enable_ytlcm }}" = "false" ] && \
-             [ "${{ github.event.inputs.enable_VolumeBoostYT }}" = "false" ] && \
-             [ "${{ github.event.inputs.enable_YouGetCaption }}" = "false" ]; then
-            
-            echo "RELEASE_PREFIX=YTPlus" >> $GITHUB_ENV
-          else
-            echo "RELEASE_PREFIX=YTPlusM" >> $GITHUB_ENV
-          fi
-
 
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v3
