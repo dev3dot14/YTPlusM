@@ -1,4 +1,4 @@
-**What's new:**
+## What's new:
 - Updated YT version to `%yt_version%`
 - YTLite: `%ytlite_version%`
 ### TIP:
