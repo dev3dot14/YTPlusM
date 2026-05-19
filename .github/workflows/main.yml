@@ -164,7 +164,6 @@ jobs:
       - name: Install cyan
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
 
-
       - name: Inject tweaks into IPA
         run: |
           tweaks="ytplus.deb OpenYoutubeSafariExtension.appex"
@@ -173,6 +172,11 @@ jobs:
           done
           cyan -i youtube.ipa -o YTPlusM_${{ env.YT_VERSION }}_${{ github.event.inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ github.event.inputs.display_name }}" -b ${{ github.event.inputs.bundle_id }}
 
+      - name: Prepare Releases Notes
+        run: |
+          sed "s/%yt_version%/${{ env.YT_VERSION }}/g; s/%ytlite_version%/${{ github.event.inputs.tweak_version }}/g" \
+          .github/RELEASE_TEMPLATE/Release_Notes.md > release_notes_prepared.md
+
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v3
         with:
@@ -180,6 +184,7 @@ jobs:
           name: YTPlusM ${{ github.event.inputs.tweak_version }} and ${{ env.YT_VERSION }}
           files: YTPlusM_${{ env.YT_VERSION }}_${{ github.event.inputs.tweak_version }}.ipa
           draft: true
+          body_path: release_notes_prepared.md
 
       - name: Output Release URL
         run: |
