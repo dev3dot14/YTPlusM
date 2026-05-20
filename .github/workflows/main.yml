@@ -193,7 +193,7 @@ jobs:
   
       - name: Prepare Releases Notes
         run: |
-          sed "s/%yt_version%/${{ env.YT_VERSION }}/g; s/%ytlite_version%/${{ github.event.inputs.tweak_version }}/g" \
+          sed "s/%yt_version%/${{ env.YT_VERSION }}/g; s/%ytlite_version%/${{ github.event.inputs.tweak_version }}/g; s/%release_prefix%/${{ env.RELEASE_PREFIX }}/g" \
           .github/RELEASE_TEMPLATE/Release_Notes.md > release_notes_prepared.md
 
       - name: Upload to GitHub Releases
