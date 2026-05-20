@@ -197,6 +197,12 @@ jobs:
           sed "s/%yt_version%/${{ env.YT_VERSION }}/g; s/%ytlite_version%/${{ github.event.inputs.tweak_version }}/g; s/%release_prefix%/${{ env.RELEASE_PREFIX }}/g" \
           .github/RELEASE_TEMPLATE/Release_Notes.md > release_notes_prepared.md
 
+      - name: Prepare Releases Notes For iOS 15
+        run: |
+          if "${{ env.YT_VERSION }}" = "20.21.6" then
+          sed "s/%yt_version%/${{ env.YT_VERSION }}/g; s/%ytlite_version%/${{ github.event.inputs.tweak_version }}/g; s/%release_prefix%/${{ env.RELEASE_PREFIX }}/g" \
+          .github/RELEASE_TEMPLATE/Release_Notes_YT20.21.6.md > release_notes_prepared_ios_15.md
+
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v3
         with:
