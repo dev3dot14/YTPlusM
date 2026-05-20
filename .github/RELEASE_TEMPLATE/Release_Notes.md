@@ -1,4 +1,4 @@
-## New pre-built release!
+# %release_prefix% release info
 - Updated YT version to `%yt_version%`
 - YTLite: `%ytlite_version%` *(5.2.1 always the cracked version)*
 ## Must read:
