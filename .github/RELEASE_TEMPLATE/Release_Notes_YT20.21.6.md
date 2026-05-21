@@ -1,4 +1,4 @@
-## %release_prefix% For iOS 15 release info
+## %release_prefix% release info
 - YT version: `%yt_version%`
 - YTLite: `%ytlite_version%` *(5.2.1 always the cracked version)*
 - **COMPATIBLE ALSO WITH IOS 15**
