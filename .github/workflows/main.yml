@@ -82,7 +82,7 @@ on:
        default: false
 
       enable_ytlegacy:
-       description: "NEW! Integrate YouGetCaption (YTPlusM)"
+       description: "NEW! Integrate YouTubeLegacy (YTPlusM)"
        type: boolean
        required: true
        default: false
