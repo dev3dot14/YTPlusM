@@ -335,7 +335,7 @@ jobs:
       - name: Build YouTubeLegacy
         if: ${{ inputs.enable_ytlegacy }}
         run: |
-          cd IAmYouTube && make clean package DEBUG=0 FINALPACKAGE=1
+          cd YouTubeLegacy && make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ../ytlegacy.deb
 
       - name: Clone Open in YouTube (Safari extension)
