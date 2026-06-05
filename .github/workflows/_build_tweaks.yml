@@ -215,16 +215,132 @@ jobs:
       - name: Patch YTLowContrastMode
         if: ${{ inputs.enable_YTLCM }}
         run: |
-         cd YTLowContrastMode
-          echo '#import <UIKit/UIKit.h>' > patch.txt
-          echo '#define IS_ENABLED(k) YES' >> patch.txt
-          echo '@interface YTQTMButton : UIButton' >> patch.txt
-          echo '- (void)setTintColor:(id)color;' >> patch.txt
-          echo '@end' >> patch.txt
-          echo '@interface YTCollectionViewCell : UICollectionViewCell' >> patch.txt
-          echo '@end' >> patch.txt
-          cat Tweak.xm >> patch.txt
-          mv patch.txt Tweak.xm
+          cd YTLowContrastMode
+          
+          # Sovrascriviamo il file unendo le classi per il menu e quelle che servono al tweak base
+          cat << 'EOF' > Tweak.x
+          #import <UIKit/UIKit.h>
+          #import <objc/runtime.h>
+
+          #define TweakName @"YTLowContrastMode"
+          #define EnabledKey @"LowContrastMode"
+
+          static const NSInteger TweakSection = 9999;
+
+          // --- DICHIARAZIONI DELLE CLASSI INTERNE DI YOUTUBE ---
+          @interface YTSettingsGroupData : NSObject
+          @property(assign, nonatomic) NSInteger type;
+          @end
+
+          @interface YTAppSettingsPresentationData : NSObject
+          @end
+
+          @interface YTSettingsSectionItem : NSObject
+          + (id)switchItemWithTitle:(NSString *)title titleDescription:(NSString *)titleDescription accessibilityIdentifier:(id)accessible switchOn:(BOOL)on switchBlock:(id)block settingItemId:(int)id;
+          @end
+
+          @interface YTSettingsViewController : UIViewController
+          - (void)reloadData;
+          - (void)setSectionItems:(id)items forCategory:(NSInteger)category title:(id)title titleDescription:(id)desc headerHidden:(BOOL)hidden;
+          @end
+
+          @interface YTSettingsSectionItemManager : NSObject
+          - (void)updateTweakSectionWithEntry:(id)entry;
+          @end
+
+          // Le classi storiche che servivano a non far sbroccare il compilatore:
+          @interface YTQTMButton : UIButton
+          - (void)setTintColor:(id)color;
+          @end
+
+          @interface YTCollectionViewCell : UICollectionViewCell
+          @end
+
+          // --- GESTIONE PREFERENZE (Attivo di default) ---
+          static BOOL IsEnabled(NSString *key) {
+              if ([[NSUserDefaults standardUserDefaults] objectForKey:key] == nil) {
+                  return YES;
+              }
+              return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+          }
+
+          // --- HOOK PER IL COLORE DEI TITOLI ---
+          @interface ELTLabel : UILabel
+          @end
+
+          %hook ELTLabel
+          - (void)setTextColor:(UIColor *)color {
+              if (IsEnabled(EnabledKey)) {
+                  %orig([UIColor colorWithWhite:0.6 alpha:1.0]);
+              } else {
+                  %orig;
+              }
+          }
+          %end
+
+          // --- COSTRUZIONE DEL MENU NATIVO ---
+          %hook YTSettingsGroupData
+          - (NSArray <NSNumber *> *)orderedCategories {
+              if (self.type != 1 || class_getClassMethod(objc_getClass("YTSettingsGroupData"), @selector(tweaks)))
+                  return %orig;
+              NSMutableArray <NSNumber *> *mutableCategories = %orig.mutableCopy;
+              [mutableCategories insertObject:@(TweakSection) atIndex:0];
+              return mutableCategories.copy;
+          }
+          %end
+
+          %hook YTAppSettingsPresentationData
+          + (NSArray <NSNumber *> *)settingsCategoryOrder {
+              NSArray <NSNumber *> *order = %orig;
+              NSUInteger insertIndex = [order indexOfObject:@(1)];
+              if (insertIndex != NSNotFound) {
+                  NSMutableArray <NSNumber *> *mutableOrder = [order mutableCopy];
+                  [mutableOrder insertObject:@(TweakSection) atIndex:insertIndex + 1];
+                  order = mutableOrder.copy;
+              }
+              return order;
+          }
+          %end
+
+          %hook YTSettingsSectionItemManager
+
+          %new(v@:@)
+          - (void)updateTweakSectionWithEntry:(id)entry {
+              NSMutableArray *sectionItems = [NSMutableArray array];
+              Class YTSettingsSectionItemClass = %c(YTSettingsSectionItem);
+              YTSettingsViewController *settingsViewController = [self valueForKey:@"_settingsViewControllerDelegate"];
+
+              YTSettingsSectionItem *master = [YTSettingsSectionItemClass switchItemWithTitle:@"Enable"
+                  titleDescription:@"Attiva o disattiva il contrasto ridotto per i titoli dei video."
+                  accessibilityIdentifier:nil
+                  switchOn:IsEnabled(EnabledKey)
+                  switchBlock:^BOOL (id cell, BOOL enabled) {
+                      [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:EnabledKey];
+                      return YES;
+                  }
+                  settingItemId:0];
+              [sectionItems addObject:master];
+
+              if ([settingsViewController respondsToSelector:@selector(setSectionItems:forCategory:title:icon:titleDescription:headerHidden:)]) {
+                  [settingsViewController setSectionItems:sectionItems forCategory:TweakSection title:TweakName icon:nil titleDescription:@"Impostazioni contrasto" headerHidden:NO];
+              } else {
+                  [settingsViewController setSectionItems:sectionItems forCategory:TweakSection title:TweakName titleDescription:@"Impostazioni contrasto" headerHidden:NO];
+              }
+          }
+
+          - (void)updateSectionForCategory:(NSUInteger)category withEntry:(id)entry {
+              if (category == TweakSection) {
+                  [self updateTweakSectionWithEntry:entry];
+                  return;
+              }
+              %orig;
+          }
+
+          %end
+          EOF
+          
+          # Ricordati sempre di controllare se l'estensione nel repo è .x o .xm!
+
 
       - name: Clone VolumeBoostYT
         if: ${{ inputs.enable_VolumeBoostYT }}
