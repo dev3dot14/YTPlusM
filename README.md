@@ -4,23 +4,33 @@
   The best fork of an incredible enhancer for the popular video app on iOS, featuring over a hundred customizable options but with the latest version freed and with more tweaks than the original <a href="https://github.com/dayanch96/YTLite">YTPlus.</a>
 </p>
 
-<p><strong>THANK YOU ALL VERY MUCH FOR THE 175 STARS AND 125 FORKS🎉</strong></p>
+<p align="center">
+ <strong>Disclaimer</strong>
+</p>
+
+<p align="center">
+  This project is an independent developer modification and is not affiliated with, authorized, maintained, sponsored, or endorsed by Google LLC or YouTube. All product and company names are trademarks of their respective holders.
+</p>
+
 
 <strong>Updates will be published in my new Telegram channel, no more updates here 👉[LINK TO JOIN](https://t.me/Mark02workshop_official)👈.</strong>
 
-<strong>Fork this repo to build yourself YTPlusM IPAs (with YTPlus from 5.1 to 5.2.1, no 5.2) without DRM Patreon subscription.
+
+<strong>Fork this repo to build yourself YTPlus and YTPlusM IPAs (with YTPlus from 5.1 to 5.2.1, no 5.2) without DRM Patreon subscription.
 Don't know how to build YTPlus or YTPlusM? Read [How to build YouTube Plus and YTPlusM app using GitHub Actions](#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions) and [What Means YTPlusM and YTPlusM DIY](#what-means-ytplusm-and-ytplusm-diy)</strong>
+
 
 # MUST READ
 **From June 1 2026 you do not need anymore [YTPlusM DIY](https://github.com/Mark02-2012/YTPlusM-DIY), but simply fork this repository (main branch). [YTPlusM DIY](https://github.com/Mark02-2012/YTPlusM-DIY) will not be updated anymore**
 
-### Starting from now, I'll slowly remove download table and releases' files due to legal reason; I CREATED A NEW TELEGRAM CHANNEL FOR RELEASES! 👉[LINK TO JOIN](https://t.me/Mark02workshop_official)👈
+**I removed download table and all releases' files due to legal reason;**
+### BUT I CREATED A NEW TELEGRAM CHANNEL FOR RELEASES! 👉[LINK TO JOIN](https://t.me/Mark02workshop_official)👈
 
-### I also created a new tweak to fix playback issues! You can find it in my new releases in the Telegram channel, in GitHub Actions and [in the official repository](https://github.com/Mark02-2012/YTPlaybackFix)
+**I also created a new tweak to fix playback issues! You can find it in my new releases in the Telegram channel, in GitHub Actions and [in the official repository](https://github.com/Mark02-2012/YTPlaybackFix)**
 
 ## Table of Contents
 - [Screenshots](#screenshots)
-- [Main Features](#main-features)
+- [Main Features of YouTube Plus](#main-features-of-youtube-plus)
 - [FAQ](#faq)
 - [Reviews](#reviews)
 - [How to build YouTube Plus and YTPlusM app using GitHub Actions](#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions)
@@ -57,17 +67,16 @@ Don't know how to build YTPlus or YTPlusM? Read [How to build YouTube Plus and Y
   </table>
 </details>
 
-## Main Features
-<li>Download videos, audio (including audio track selection), thumbnails, posts, and profile pictures</li>
-<li>Copy video, comment, and post information</li>
-<li>Interface customization: Remove feed elements, reorder tabs, enable OLED mode, and as use Shorts-only mode</li>
-<li>Player settings: Gestures, default quality, preferred audio track</li>
-<li>Save, Load and Restore settings. Clear cache once or automatically on app startup</li>
-<li>Built-in SponsorBlock</li>
-<li>And much, much more</li>
-<br>
-
-
+## Main Features of YouTube Plus
+  <li>Download videos, audio (including audio track selection), thumbnails, posts, and profile pictures</li>
+  <li>Copy video, comment, and post information</li>
+  <li>Interface customization: Remove feed elements, reorder tabs, enable OLED mode, and as use Shorts-only mode</li>
+  <li>Player settings: Gestures, default quality, preferred audio track</li>
+  <li>Save, Load and Restore settings. Clear cache once or automatically on app startup</li>
+  <li>Built-in SponsorBlock</li>
+  <li>And much, much more</li>
+  <br>
+  
 **YouTube Plus preferences can be found in the YouTube Settings**
 
 **All contributors are listed in the Contributors section**
