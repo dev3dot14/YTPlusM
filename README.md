@@ -147,7 +147,7 @@ Review by [@qbap](https://github.com/qbap) on ONE Jailbreak: https://onejailbrea
 ## What Means YTPlusM and YTPlusM DIY
 <details>
  <summary><strong>YTPlusM</strong></summary>
-<p><strong>YTPlusM</strong> is a fork of <a href="https://github.com/dayanch96/YTLite">YTPlus</a> but with <strong>seven more tweak integrated</strong> (<a href="https://github.com/fosterbarnes/YTweaks">YTweaks</a>, <a href="https://github.com/castdrian/Gonerino">Gonerino</a>, <a href="https://github.com/PoomSmart/YouSpeed">YouSpeed</a>, <a href="https://github.com/arichornlover/YTLowContrastMode">YTLowContrastMode</a>, <a href="https://github.com/VasirakCalgux/VolumeBoostYT">VolumeBoostYT</a>, <a href="https://github.com/PoomSmart/YouGetCaption">YouGetCaption</a> and my tweak <a href="https://github.com/Mark02-2012/YTPlaybackFix">YTPlaybackFix</a>). <strong>YTPlus releases will not have those extra tweaks, but only YTLite and YouPiP, YTUHD, Return-YouTube-Dislikes, YouQuality, DontEatMyContent and YTABConfig.</strong></p>
+<p><strong>YTPlusM</strong> is a fork of <a href="https://github.com/dayanch96/YTLite">YTPlus</a> but with <strong>ten more tweaks integrated</strong> (<a href="https://github.com/fosterbarnes/YTweaks">YTweaks</a>, <a href="https://github.com/castdrian/Gonerino">Gonerino</a>, <a href="https://github.com/PoomSmart/YouSpeed">YouSpeed</a>, <a href="https://github.com/arichornlover/YTLowContrastMode">YTLowContrastMode</a>, <a href="https://github.com/VasirakCalgux/VolumeBoostYT">VolumeBoostYT</a>, <a href="https://github.com/PoomSmart/YouGetCaption">YouGetCaption</a>, my tweak <a href="https://github.com/Mark02-2012/YTPlaybackFix">YTPlaybackFix</a>, <a href="https://github.com/PoomSmart/YouChooseQuality">YouChooseQuality</a>, <a href="https://github.com/Tonwalter888/YouShare">YouShare</a> and <a href="https://github.com/mikey820/PleaseDontStopTheMusic">PleaseDontStopTheMusic</a>). <strong>YTPlus releases will not have those extra tweaks, but only YTLite and YouPiP, YTUHD, Return-YouTube-Dislikes, YouQuality, DontEatMyContent and YTABConfig.</strong></p>
 </details>
 
 
@@ -169,6 +169,8 @@ Finally! YTLowContrastMode added, supporting also newest YT IPAs
 Added VolumeBoostYT and YouGetCaption
 <li><strong>1.3 (June 24 2026):</strong></li>
 Created by myself and added YTPlaybackFix
+<li><strong>1.4 (July 12 2026):</strong></li>
+Added YouChooseQuality, YouShare and PleaseDontStopTheMusic + replaced YTLowContrastMode with my new fork of it where I added a setting section
 
 ## Supported YouTube Version
 <ul>
@@ -178,8 +180,8 @@ Created by myself and added YTPlaybackFix
 </ul>  
 
 <ul>
-   <li><strong>Latest confirmed:</strong> <em>21.22.4</em></li>
-   <li><strong>Date tested:</strong> <em>May 30, 2026</em></li>
+   <li><strong>Latest confirmed:</strong> <em>21.28.3</em></li>
+   <li><strong>Date tested:</strong> <em>July 12, 2026</em></li>
    <li><strong>YouTube Plus:</strong> <em>5.2.1</em></li>
 </ul>
 <strong>⚠️YTPlus 5.2b4 doesn't work with the latest versions of yt (from 21.14.4 and above), so use YTPlus 5.2.1 to build YTPlusM with newest yt versions⚠️</strong>
@@ -238,7 +240,6 @@ Created by myself and added YTPlaybackFix
  <p>YTweaks is a tweak developed by <a href="https://github.com/fosterbarnes">fosterbarnes</a> that adds various tweaks for the iOS YouTube app.</p>
  <p><strong>YTweaks preferences</strong> are available in the <strong>YouTube settings</strong>.</p>
  <p>Source code and additional information are available <a href="https://github.com/fosterbarnes/YTweaks">in fosterbarnes' repository</a>.</p>
- <p><em>From now, YOU can build your version of YTPlusM! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
 </details>
 
 <details>
@@ -246,7 +247,6 @@ Created by myself and added YTPlaybackFix
  <p>Gonerino is a tweak developed by <a href="https://github.com/castdrian">castdrian</a>, a tweak to block specific videos, channels and words for the iOS YouTube app.</p>
  <p><strong>Gonerino preferences</strong> are available in the <strong>YouTube settings</strong>.</p>
  <p>Source code and additional information are available <a href="https://github.com/castdrian/Gonerino">in castdrian's repository</a>.</p>
- <p><em>Gonerino is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_21.13.6_updated_YTPlusM">YTPlusM 21.13.6 updated</a> and <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_20.21.6_YTweaks">YTPlusM 20.21.6 for iOS 15</a> pre-built releases, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
 </details>
 
 <details>
@@ -254,44 +254,60 @@ Created by myself and added YTPlaybackFix
  <p>YouSpeed is a tweak developed by <a href="https://github.com/PoomSmart">PoomSmart</a>, a tweak to view, change and add video speed options in the video overlay.</p>
  <p><strong>YouSpeed preferences</strong> are available in the <strong>Video overlay</strong> section under <strong>YouTube settings</strong>.</p>
  <p>Source code and additional information are available <a href="https://github.com/PoomSmart/YouSpeed">in PoomSmart's repository</a>.</p>
- <p><em>YouSpeed is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_21.13.6_updated_YTPlusM">YTPlusM 21.13.6 updated</a> and <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2b4_20.21.6_YTweaks">YTPlusM 20.21.6 for iOS 15</a> pre-built releases, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
 </details>
 
 <details>
- <summary><strong></strong> YTLowContrastMode (only on YTPlusM versions)</summary>
- <p>YTLowContrastMode is a tweak developed by <a href="https://github.com/arichornlover">arichornlover</a>, a Tweak to make YT and YTMusic apps' Interface Low Contrast as possible and Easy on the eyes.</p>
- <p><strong>YTLowContrastMode preferences are not available</strong>; the tweak <strong>is already activated</strong> when you choose to inject it.</p>
- <p>Source code and additional information are available <a href="https://github.com/arichornlover/YTLowContrastMode">in arichornlover's repository</a>.</p>
- <p><em>YTLowContrastMode is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2.1_21.18.4_updated">YTPlusM 5.2.1 and 21.18.4 updated</a> pre-built release, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
+ <summary>YTLowContrastMode (only on YTPlusM versions)</summary>
+ <p>YTLowContrastMode is a tweak developed by <a href="https://github.com/arichornlover">arichornlover</a>, a Tweak to make YT and YTMusic apps' Interface Low Contrast as possible and Easy on the eyes. (In the IPAs will be used my fork of it)</p>
+ <p>YTLowContrastMode preferences are available in the <strong>YouTube settings</strong>.</p>
+ <p>Source code and additional information are available <a href="https://github.com/Mark02-2012/YTLowContrastMode">in mine repository</a>.</p>
 </details>
 
 <details>
- <summary><strong></strong> VolumeBoostYT (only on YTPlusM versions)</summary>
+ <summary>VolumeBoostYT (only on YTPlusM versions)</summary>
  <p>VolumeBoostYT is a tweak developed by <a href="https://github.com/VasirakCalgux">VasirakCalgux</a> that provides an independent, gesture-based volume control for the YouTube app, completely separate from the system volume.</p>
  <p><strong>VolumeBoostYT preferences</strong> are available in the <strong>YouTube settings</strong>.</p>
  <p>Source code and additional information are available <a href="https://github.com/VasirakCalgux/VolumeBoostYT">in VasirakCalgux's repository</a>.</p>
- <p><em>VolumeBoostYT is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2.1_21.19.2(56)">YTPlusM 5.2.1 and 21.19.2</a> pre-built release, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
 </details>
 
 <details>
- <summary><strong></strong> YouGetCaption (only on YTPlusM versions)</summary>
+ <summary>YouGetCaption (only on YTPlusM versions)</summary>
  <p>YouGetCaption is a tweak developed by <a href="https://github.com/PoomSmart">PoomSmart</a> that views and copies video caption from YouTube app from the video overlay.</p>
  <p><strong>YouGetCaption preferences</strong> are available in the <strong>Video overlay</strong> section under <strong>YouTube settings</strong>.</p>
  <p>Source code and additional information are available <a href="https://github.com/PoomSmart/YouGetCaption">in PoomSmart's repository</a>.</p>
- <p><em>YouGetCaption is available only from <a href="https://github.com/Mark02-2012/YTPlusM/releases/tag/5.2.1_21.19.2(56)">YTPlusM 5.2.1 and 21.19.2</a> pre-built release, but you can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a></em></p>
 </details>
 
 <details>
- <summary><strong>NEW!</strong> YTPlaybackFix (only on YTPlusM versions)</summary>
+ <summary>YTPlaybackFix (only on YTPlusM versions)</summary>
  <p>YTPlaybackFix is a tweak developed by me that try to fix playback issues by refreshing the video every time the error 14 appears ("something went wrong")</p>
  <p><strong>YTPlaybackFix preferences</strong> for the moment are <strong>not available</strong> as the tweak will refresh videos only if the error appears.</p>
  <p>Source code and additional information are available <a href="https://github.com/Mark02-2012/YTPlaybackFix">in my repository</a>.</p>
- <p><em>You can build your version of YTPlusM now! View <a href=#how-to-build-youtube-plus-and-ytplusm-app-using-github-actions>How to build YouTube Plus and YTPlusM app using GitHub Actions</a> and <a href=#what-means-ytplusm-and-ytplusm-diy>What Means YTPlusM and YTPlusM DIY</a> (or <a href="https://t.me/Mark02workshop_official">join my telegram channel</a> to download the pre-built IPA with this new tweak)</em></p>
+</details>
+
+<details>
+ <summary><strong>NEW!</strong> YouChooseQuality (only on YTPlusM versions)</summary>
+ <p>YouChooseQuality is a tweak developed by <a href="https://github.com/PoomSmart">PoomSmart</a> that auto-selects the video quality of choice in iOS YouTube app.</p>
+ <p><strong>YouChooseQuality preferences</strong> are available in the <strong>YouTube settings</strong>.</p>
+ <p>Source code and additional information are available <a href="https://github.com/PoomSmart/YouChooseQuality">in PoomSmart's repository</a>.</p>
+</details>
+
+<details>
+ <summary><strong>NEW!</strong> YouShare (only on YTPlusM versions)</summary>
+ <p>YouShare is a tweak developed by <a href="https://github.com/PoomSmart">PoomSmart</a> (but I'm using <a href="https://github.com/Tonwalter888/YouShare">this fork</a> by <a href="https://github.com/Tonwalter888">TonWalter888</a>) that allows you to share videos faster in iOS YouTube app.</p>
+ <p><strong>YouShare preferences</strong> are available in the <strong>Video Overlay</strong> section under <strong>YouTube settings</strong>.</p>
+ <p>Source code and additional information are available <a href="https://github.com/Tonwalter888/YouShare">in Tonwalter888's repository</a>.</p>
+</details>
+
+<details>
+ <summary><strong>NEW!</strong> PleaseDontStopTheMusic (only on YTPlusM versions)</summary>
+ <p>PleaseDontStopTheMusic is a tweak developed by <a href="https://github.com/mikey820">mikey820</a> that prevents apps (e.g. Roblox) from pausing your background music.</p>
+ <p><strong>PleaseDontStopTheMusic preferences</strong> are not available.</p>
+ <p>Source code and additional information are available <a href="https://github.com/mikey820/PleaseDontStopTheMusic">in mikey820's repository</a>.</p>
 </details>
 
 
 ## Special thanks
-This project is alive **only** thanks to those guys:
+This project is alive also thanks to those fantastic guys:
 
 
 <a href="https://github.com/dayanch96">Dayanch96</a>: **creator of YTPlus**
@@ -303,7 +319,7 @@ This project is alive **only** thanks to those guys:
 <a href="https://github.com/fosterbarnes">fosterbarnes</a>: **creator of YTweaks**
 
 
-<a href="https://github.com/PoomSmart">PoomSmart</a>: **creator of YouSpeed and YouGetCaption**
+<a href="https://github.com/PoomSmart">PoomSmart</a>: **creator of YouSpeed, YouGetCaption, YouChooseQuality and YouShare**
 
 
 <a href="https://github.com/arichornlover">arichornlover</a>: **creator of YTLowContrastMode**
@@ -313,3 +329,5 @@ This project is alive **only** thanks to those guys:
 
 
 <a href="https://github.com/VasirakCalgux">VasirakCalgux</a>: **creator of VolumeBoostYT**
+
+<a href="https://github.com/mikey820">mikey820</a>: **creator of PleaseDontStopTheMusic**
